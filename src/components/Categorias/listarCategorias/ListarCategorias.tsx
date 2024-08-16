@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dna } from 'react-loader-spinner';
 import Categoria from '../../../models/Categoria';
 import { listar } from '../../../services/Service';
-import CardCategorias from '../cardCategorias/CardCategorias'; // Atualize o caminho conforme necessário
+import CardCategorias from '../cardCategorias/CardCategorias';
 
 function ListaCategorias() {
 
