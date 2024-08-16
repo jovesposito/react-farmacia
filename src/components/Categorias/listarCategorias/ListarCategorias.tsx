@@ -3,6 +3,7 @@ import { Dna } from 'react-loader-spinner';
 import Categoria from '../../../models/Categoria';
 import { listar } from '../../../services/Service';
 import CardCategorias from '../cardCategorias/CardCategorias';
+import { toastAlerta } from '../../../utils/toastAlerta'
 
 function ListaCategorias() {
 
@@ -12,7 +13,7 @@ function ListaCategorias() {
     try {
       await listar('/categorias', setCategorias);
     } catch (error) {
-      alert('Erro ao buscar as categorias');
+      toastAlerta('Erro ao buscar as categorias', 'erro');
     }
   }
 
