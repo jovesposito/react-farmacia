@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import Categoria from '../../../models/Categoria'
 import { listar, deletar } from '../../../services/Service'
+import { toastAlerta } from '../../../utils/toastAlerta'
 
 function DeletarCategoria() {
 
@@ -15,7 +16,7 @@ function DeletarCategoria() {
         try {
             await listar(`/categorias/${id}`, setCategoria)
         } catch (error) {
-            alert('Erro ao buscar a categoria')
+            toastAlerta('Erro ao buscar a categoria', 'erro')
         }
     }
 
@@ -32,9 +33,9 @@ function DeletarCategoria() {
     async function deletarCategoria() {
         try {
             await deletar(`/categorias/${id}`)
-            alert('Categoria apagada com sucesso')
+            toastAlerta('Categoria apagada com sucesso', 'sucesso')
         } catch (error) {
-            alert('Erro ao apagar a Categoria')
+            toastAlerta('Erro ao apagar a Categoria', 'erro')
         }
         retornar()
     }
@@ -47,7 +48,7 @@ function DeletarCategoria() {
 
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header className='py-2 px-6 bg-[#859B48] text-white font-bold text-2xl'>Categoria</header>
-                <p className='p-8 text-3xl bg-[#C4C7B6] h-full'>{categoria.descricao}</p>
+                <p className='p-8 text-3xl bg-[#ECE5DF] h-full'>{categoria.descricao}</p>
                 <div className="flex">
                     <button className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>Não</button>
                     <button className='w-full text-slate-100 bg-[#C4C7B6] hover:bg-[#859B48] flex items-center justify-center' onClick={deletarCategoria}>
